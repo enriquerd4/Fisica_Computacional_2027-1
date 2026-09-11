@@ -8,8 +8,8 @@ estándar, aproximaciones numéricas de funciones como:
 - seno(x)          -- ya implementada, con serie de Taylor
 - coseno(x)        -- Práctica 1 lista :D
 - exponencial(x)   -- Práctica 1 lista :D
-- ln(x)            -- pendiente (práctica 1)
-- raiz_cuadrada(x) -- pendiente (práctica 1)
+- ln(x)            --Práctica 1 lista :D
+- raiz_cuadrada(x) -- pendiente (práctica 1), esta no venía en la tarea
 
 Las funciones basadas en series (seno, coseno, exponencial, ...) usan
 EPS (fiscomp.precision_numerica) como criterio de convergencia: se
@@ -75,6 +75,36 @@ def exponencial(x, precision = EPS):
 
     while True:     #Esta vez haré un while, siguiendo lo hecho en la del seno y coseno
         terminos = (x**k)/(factorial(k))   #La fórmula para el temino k dentro de la suma
+        if abs(terminos) < precision:
+            break            #Para salirse del while pero aún ejecuta lo siguiente
+        suma += terminos
+        k += 1
+    return suma
+
+def ln(x, precision = EPS):   
+
+    """
+    Aquí voy a tomar la sugerencia del problema de calcularlo con y,
+    pero también debo poner algo como que para los x iguales o menores a 0 esto no funciona.
+
+    Según google la serie ln(1+y/1-y) se puede escribir como:
+
+    2 * la suma de k = 0 a infinito de y a la 2n + 1 / 2n+1, esto ya lo comprobare al final en el error.
+    Pero usaré la expresión de arriba
+    """
+
+    #Primero abordamos lo de que x > 0, i.e., un anuncio para todo lo que esté abajo de eso
+    if x  <= 0:
+        raise ValueError(f"El logaritmo natural solo existe para x > 0 ")
+    
+    suma = 0
+    k = 0
+    
+    #Ahora el cambio de variable
+    y = (x-1)/(x+1)
+
+    while True:     
+        terminos = 2*(y**(2*k+1))/(2*k + 1)     #Creo que es mejor multiplicar el 2 a cada término por lo de la precisión
         if abs(terminos) < precision:
             break            #Para salirse del while pero aún ejecuta lo siguiente
         suma += terminos
