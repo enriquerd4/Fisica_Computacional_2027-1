@@ -55,6 +55,19 @@ def seno(x, precision=EPS):
         k += 1
     return suma
 
+def coseno(x, precision = EPS):    #Esta es la que hicimos en clase con Ossmar
+    #Funcion coseno con series de Taylor
+    suma = 0.0
+    k = 0
+
+    while True:
+        termino = (-1)** k * x ** (2*k)/factorial(2*k)
+        if abs(termino) < precision:
+            break            #Para salirse del while pero aún ejecuta lo siguiente
+        suma += termino
+        k += 1
+    return suma 
+
 
 if __name__ == "__main__":
     import math
