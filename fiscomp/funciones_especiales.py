@@ -6,8 +6,8 @@ estándar, aproximaciones numéricas de funciones como:
 
 - factorial(n)     -- ya implementada
 - seno(x)          -- ya implementada, con serie de Taylor
-- coseno(x)        -- pendiente (práctica 1)
-- exponencial(x)   -- pendiente (práctica 1)
+- coseno(x)        -- Práctica 1 lista :D
+- exponencial(x)   -- Práctica 1 lista :D
 - ln(x)            -- pendiente (práctica 1)
 - raiz_cuadrada(x) -- pendiente (práctica 1)
 
@@ -67,6 +67,19 @@ def coseno(x, precision = EPS):    #Esta es la que hicimos en clase con Ossmar
         suma += termino
         k += 1
     return suma 
+
+def exponencial(x, precision = EPS):
+
+    suma = 0 #Para sumar k términos, necesitamos un ciclo dentro de la función
+    k = 0
+
+    while True:     #Esta vez haré un while, siguiendo lo hecho en la del seno y coseno
+        terminos = (x**k)/(factorial(k))   #La fórmula para el temino k dentro de la suma
+        if abs(terminos) < precision:
+            break            #Para salirse del while pero aún ejecuta lo siguiente
+        suma += terminos
+        k += 1
+    return suma
 
 
 if __name__ == "__main__":
