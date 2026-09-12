@@ -153,4 +153,5 @@ Así que lo dejaré así en el repositorio.
 El fin de semana pienso acabarlo de todos modos porque aún no le entiendo al 100 A GitHub,
 pero si me pueden calificar aunque sea esta parte así como está sería increible.
 
+Mis códigos de los otros ejercicios están en el otro repositorio
 """
